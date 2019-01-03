@@ -123,7 +123,7 @@ int main(void)
 	HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
 	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET);
 	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
-	user_pwm_setvalue(2000);
+	user_pwm_setvalue(&htim3,2000,TIM_CHANNEL_1);
   /* USER CODE END 2 */
 
   /* Infinite loop */

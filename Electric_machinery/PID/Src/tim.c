@@ -305,7 +305,7 @@ void HAL_TIM_PWM_MspDeInit(TIM_HandleTypeDef* tim_pwmHandle)
 } 
 
 /* USER CODE BEGIN 1 */
-	void user_pwm_setvalue(uint16_t value)
+	void user_pwm_setvalue(TIM_HandleTypeDef *htim , uint16_t value ,uint32_t Channel )
 	{
 	    TIM_OC_InitTypeDef sConfigOC;
 
@@ -317,9 +317,9 @@ void HAL_TIM_PWM_MspDeInit(TIM_HandleTypeDef* tim_pwmHandle)
 
 	    sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
 
-	    HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_1);
+	    HAL_TIM_PWM_ConfigChannel(htim, &sConfigOC, Channel);
 
-	    HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);  
+	    HAL_TIM_PWM_Start(htim, Channel);  
 
 	}
 /* USER CODE END 1 */
