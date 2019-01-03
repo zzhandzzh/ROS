@@ -113,14 +113,17 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_USART1_UART_Init();
   MX_TIM2_Init();
   MX_TIM3_Init();
+  MX_TIM1_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 	uint32_t enc1;
 	HAL_TIM_Encoder_Start(&htim2, TIM_CHANNEL_ALL);
-	HAL_GPIO_WritePin(GPIOA,4,GPIO_PIN_SET);
-	HAL_GPIO_WritePin(GPIOA,5,GPIO_PIN_RESET);
+	HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
+	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
+	user_pwm_setvalue(2000);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -131,9 +134,9 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 		HAL_Delay(1000);
-	enc1 = (uint32_t)(__HAL_TIM_GET_COUNTER(&htim2));
+		enc1 = (uint32_t)(__HAL_TIM_GET_COUNTER(&htim2));
 		printf("%d",enc1);
-		user_pwm_setvalue(1000);
+		
 
 		
   }
