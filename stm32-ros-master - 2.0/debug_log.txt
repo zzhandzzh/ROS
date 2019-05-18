@@ -1,0 +1,3 @@
+3.0 	
+在平衡车基础上可以与ROS通信，ROS端运行rosrun my_serial_node my_serial_node能够显示Reading from serial port，即表示ser.available()不为0，故底盘与ROS能够一直通信。
+而publish odometry不能每次正常显示，即data_analysis(r_buffer)为0，即数据包校验失败，常表现为刚开始就失败，或者出现一两次成功后面就全部失败（不再显示publish odometry）。偶尔成功与Reading from serial port同步显示，即数据包校验一直通过。
